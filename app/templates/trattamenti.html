@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}Trattamenti{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='trattamenti.css') }}">
+    
+
+    <div class="trattamenti-container">
+
+        <h1 class="trattamenti-title">Trattamenti</h1>
+
+
+        <div class="triple-menu-cont">
+
+            <div class="menu1">
+                <img src="/static/menu1.png" alt="menu-ph1">
+            </div>
+
+            <div class="menu2">
+                <img src="/static/menu3.png" alt="menu-ph3">
+            </div>
+
+            <div class="menu3">
+                <img src="/static/menu2.png" alt="menu-ph2">
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

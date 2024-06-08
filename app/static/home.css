@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.presentation-cont {
+    background-color: transparent;
+    width: 500px;
+    height: 200px;
+    border-radius: 60%;
+    margin: auto;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.797);
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.793);
+    font-size: 25px;
+}
+
+.hands1-photo-cont {
+    width: 1200px;
+    margin-left: -182px;
+    margin-top: -50px;
+    filter: opacity(80%);
+}
+
+.hands1-photo-cont img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.button1-cont {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: rgba(149, 110, 169);
+    width: 200px;
+    height: 20px;
+    margin: 20px;
+    padding: 15px;
+    margin-top: 250px;
+    border-radius: 3px;
+    border: 0.5px solid rgba(255, 255, 255, 0.619);
+    transition: 0.3s ease;
+}
+
+.button1-cont:hover {
+    transform: scale(1.1);
+    background-color: black;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .presentation-cont {
+        background-color: transparent;
+        width: 300px;
+        height: 130px;
+        text-align: center;
+        border-radius: 60%;
+        margin: auto;
+        margin-top: 150px;
+    }
+    
+    h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 300px;
+        text-align: center;
+        margin: auto;
+        color: rgba(255, 255, 255, 0.797);
+        margin-top: 50px;
+        font-size: 30px;
+    }
+    
+    h4 {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 300px;
+        text-align: center;
+        margin: auto;
+        color: rgba(255, 255, 255, 0.793);
+        font-size: 20px;
+    }
+    
+    .hands1-photo-cont {
+        width: 400px;
+        margin-left: 0;
+        margin-top: 10px;
+        filter: opacity(80%);
+        overflow: hidden;
+    }
+    
+    .hands1-photo-cont img{
+        width: 100%;
+        margin-left: 0;
+        object-fit: cover;
+        box-sizing: border-box;
+    }
+    
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+        width: 250px;
+        margin: auto;
+        margin-top: 150px;
+    }
+    
+    .button1-cont {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: white;
+        background-color: rgba(149, 110, 169);
+        width: 200px;
+        height: 20px;
+        margin: auto;
+        margin-top: 25px;
+        border-radius: 3px;
+        border: 0.5px solid rgba(255, 255, 255, 0.619);
+        transition: 0.3s ease;
+    }
+    
+    .button1-cont:hover {
+        transform: scale(1.1);
+        background-color: black;
+    }
+    
+    a {
+        text-decoration-line: none;
+    }
+}
+

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    
+
+    <div class="container">
+
+        <div class="presentation-cont">
+            <h2>Francesca Beauty</h2>
+            <h4>Fa la Differenza.</h4>
+
+            <div class="hands1-photo-cont">
+            <img src="/static/hands1.png" alt="hands">
+        </div>
+        </div>
+
+        <div class="buttons">
+
+        <a href="/booking">
+        <div class="button1-cont">Prenota un Appuntamento</div>
+        </a>
+
+        <a href="/trattamenti">
+            <div class="button1-cont">Tutti i miei Trattamenti</div>
+            </a>
+
+        </div>
+
+    </div>
+
+{% endblock %}

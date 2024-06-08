@@ -1,0 +1,468 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+.mega-cont {
+    display: flex;
+    width: 100%;
+    height: 600px;
+    justify-content: center;
+    padding-top: -50px;
+}
+
+
+
+
+/* casella evento */
+
+.fc-timegrid-event {
+    background-color: rgb(213, 24, 255);
+    /*width: 250px;
+    height: 23px;*/ /* altezza della casella dell'appuntamento */
+    border-radius: 0%;
+    border: none;
+}
+
+.fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+    height: fit-content;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.682);
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.fc .fc-timegrid-slot-minor {
+    height: 32px;
+}
+
+.fc .fc-timegrid-slot {
+    border-bottom: 0px;
+    height: 1.5em;
+    height: 32px;
+}
+
+
+
+
+
+.booking-event {
+    height: 2px;
+    width: 78px;
+    background-color: red;
+    justify-content: center;
+}
+
+.booking-event2 {
+    color: black;
+    font-weight: 500;
+}
+
+
+#calendar {
+    width: 600px;
+    height: 580px;
+    background-color: rgba(243, 243, 243, 0.2);
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.533);
+    margin: 20px;
+    overflow: hidden;
+}
+
+
+/* Stile per i titoli */
+.fc .fc-toolbar-title {
+    font-size: 25px;
+    color: #ffffff; /* Colore del testo */
+}
+
+.fc-col-header-cell-cushion {
+    color: white;
+}
+
+
+
+/* timegrid */
+
+
+.fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink {
+    background-color: rgba(255, 255, 255, 0.362);
+}
+
+/* Stile per i giorni attivi e non attivi */
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: #ac77ba;
+    font-weight: bold;
+    color: white !important;
+}
+
+.fc .fc-daygrid-day.fc-day-past {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.fc .fc-daygrid-day.fc-day-future {
+    background-color: #f5f5f5;
+}
+
+.fc-col-header-cell-cushion {
+    display: flex;
+    width: 80px;
+    height: 20px;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.fc-today-button {
+    width: 150px;
+}
+
+.fc-button.fc-button-primary {
+    border: #ac77ba;
+    padding: 2px;
+}
+
+.fc-toolbar-chunk {
+    display: flex;
+    width: 200px;
+    height: 45px;
+    justify-content: center;
+    margin: 15px;
+}
+
+.fc-button-group {
+    display: flex;
+    width: 150px;
+    text-align: center;
+}
+
+.fc-prev-button, .fc-next-button {
+    width: 85px;
+    color: white;
+    margin: 10px;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+.form-content {
+    z-index: 2;
+    margin: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+form {
+    width: 300px;
+    text-align: center;
+    background-color: rgba(243, 243, 243, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.516);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+}
+
+input {
+    display: block;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px transparent;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100, 0.3);
+}
+
+select {
+    display: block;
+    width: 87%;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px transparent;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100, 0.3);
+}
+
+option {
+    color: black;
+}
+
+button {
+    color: white;
+    background-color: rgba(149, 110, 169, 0.97) !important;
+    width: 85%;
+    height: 30px;
+    margin: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-top: 25px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #000000;
+    transform: scale(1.1);
+}
+
+#bookingList {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.booking-item {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 767px) {
+    body {
+        font-family: Arial, sans-serif;
+        height: 1200px;
+    }
+    
+    .mega-cont {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 1155px;
+        margin-top: 50px;
+    }
+    
+   
+    
+    
+    /* casella evento */
+    
+    .fc-timegrid-event {
+        background-color: rgb(213, 24, 255);
+        width: 250px;
+        height: 23px;
+        border-radius: 0%;
+        border: none;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1px;
+    }
+    
+    .fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
+        height: 20px;
+    }
+    
+    
+    .booking-event {
+        height: 2px;
+        width: 78px;
+        background-color: red;
+        justify-content: center;
+    }
+    
+    .booking-event2 {
+        color: black;
+        font-weight: 500;
+    }
+    
+    
+    #calendar {
+        width: 90%;
+        height: 600px;
+        background-color: rgba(243, 243, 243, 0.2);
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.533);
+        margin: 20px;
+        overflow: hidden;
+    }
+    
+    
+    /* Stile per i titoli */
+    .fc .fc-toolbar-title {
+        font-size: 20px;
+        color: #ffffff; /* Colore del testo */
+    }
+    
+    .fc-col-header-cell-cushion {
+        color: white;
+    }
+    
+    
+    
+    /* timegrid */
+    
+    
+    .fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink {
+        background-color: rgba(255, 255, 255, 0.362);
+    }
+    
+    /* Stile per i giorni attivi e non attivi */
+    .fc .fc-daygrid-day.fc-day-today {
+        background-color: #ac77ba;
+        font-weight: bold;
+        color: white !important;
+    }
+    
+    .fc .fc-daygrid-day.fc-day-past {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+    
+    .fc .fc-daygrid-day.fc-day-future {
+        background-color: #f5f5f5;
+    }
+    
+    .fc-col-header-cell-cushion {
+        display: flex;
+        width: 80px;
+        height: 20px;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    
+    .fc-today-button {
+        width: 80px;
+    }
+    
+    .fc-button.fc-button-primary {
+        border: #ac77ba;
+        padding: 2px;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex;
+        width: 170px;
+        height: 45px;
+        justify-content: center;
+        margin: 15px;
+    }
+    
+    .fc-button-group {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        text-align: center;
+    }
+    
+    .fc-prev-button, .fc-next-button {
+        width: 85px;
+        color: white;
+        margin: 10px;
+        margin-top: 25px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    .form-content {
+        z-index: 2;
+        margin: 20px;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+        color: white;
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    form {
+        width: 300px;
+        text-align: center;
+        background-color: rgba(243, 243, 243, 0.2);
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.516);
+        margin: auto;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+    }
+    
+    input {
+        display: block;
+        width: 80%;
+        margin: auto;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px transparent;
+        color: white;
+        border-radius: 5px;
+        background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    select {
+        display: block;
+        width: 87%;
+        margin: auto;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px transparent;
+        color: white;
+        border-radius: 5px;
+        background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    option {
+        color: black;
+    }
+    
+    button {
+        color: white;
+        background-color: rgba(149, 110, 169, 0.97) !important;
+        width: 85%;
+        height: 30px;
+        margin: auto;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        margin-top: 25px;
+        transition: 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #000000;
+        transform: scale(1.1);
+    }
+    
+    #bookingList {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .booking-item {
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+}

@@ -1,0 +1,128 @@
+/* Stili per la navbar */
+
+
+nav {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent; 
+    padding: 10px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    color: white; 
+    width: 900px;
+    margin: auto;
+}
+
+/* Stili per i link nella navbar */
+nav a {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px; 
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    transform: scale(1.3);
+}
+
+.fraLogo {
+    height: 100px;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 9999;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.menu-button {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.side-menu a:hover {
+    color: #e387ff;
+    transform: scale(1.1);
+}
+
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+@media (max-width: 767px) {
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    nav a {
+        display: none;
+    }
+
+    nav {
+        width: 300px;
+    }
+
+
+    .menu-button {
+        position: absolute;
+        display: block;
+        margin-left: 40px;
+        margin-top: 20px;
+        font-size: 30px;    
+    }
+
+    .fraLogo {
+        position: absolute;
+        height: 80px;
+        margin-left: 40px;
+        margin-top: 100px;
+    }
+
+    #video-background {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        z-index: -1; 
+    }
+
+}
+
+
+
+
+

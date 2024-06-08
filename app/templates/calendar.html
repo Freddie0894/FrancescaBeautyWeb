@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}Prenotazione Centro Estetico - Home{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='calendarPage.css') }}">
+
+
+<h1>Seleziona data e ora per: {{ trattamento }}</h1>
+
+
+<div id="calendar-container">
+    <div id="week-navigation">
+        <button id="prev-week">&lt;</button>
+        <h2 class="month-title">Mese</h2>
+        <button id="next-week">&gt;</button>
+    </div>
+    <div id="week-days">
+        <!-- Qui verranno visualizzati i giorni della settimana -->
+    </div>
+    <div id="day-grid">
+        <!-- Qui verrà visualizzata la griglia del giorno cliccato -->
+    </div>
+    <form id="form-appuntamento" method="POST" action="{{ url_for('main.booking_confirm') }}" style="display: none;">
+        <input type="hidden" name="trattamento" value="{{ trattamento }}">
+        <input type="hidden" id="selected-date" name="data">
+        <input type="hidden" id="selected-time" name="ora">
+        <button class="prosegui-button" type="submit">Prosegui</button>
+    </form>
+</div>
+
+<script>
+    // Passa il trattamento come variabile JavaScript
+    var trattamento = "{{ trattamento }}";
+</script>
+
+<script src="{{ url_for('static', filename='calendarPage.js') }}"></script>
+
+{% endblock %}
+
+

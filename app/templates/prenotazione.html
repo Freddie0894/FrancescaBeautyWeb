@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}Prenotazione Centro Estetico - Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='prenotazione2.css') }}">
+<script src="{{ url_for('static', filename='calendar2.js') }}"></script>
+
+<h1>Prenota un Trattamento</h1>
+<div class="container">
+    <div class="category-card" id="Unghie">
+
+        <div class="princ-cont">
+        <h2>Unghie</h2>
+
+        <div class="inner-img-cont">
+            <img class="inner-img" src="/static/nailsImg.png" alt="nails-img">
+        </div>
+    </div>
+        
+        <div class="subcategories">
+            <a href="{{ url_for('main.calendar', trattamento='Manicure') }}"><p>Manicure<span class="price">€ 15</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Manicure+e+Smalto') }}"><p>Manicure e Smalto<span class="price">€ 20</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Manicure+e+Semipermanente') }}"><p>Manicure e Semipermanente<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Rimozione+e+Semipermanente') }}"><p>Rimozione Semipermanente<span class="price">€ 5</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Manicure+e+Ricostruzione+Unghie') }}"><p>Manicure e Ricostruzione Unghie<span class="price">€ 65</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Manicure+e+Copertura+Gel') }}"><p>Manicure e Copertura Gel<span class="price">€ 50</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Manicure+e+Refill+Gel') }}"><p>Manicure e Refill Gel<span class="price">€ 40</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Pedicure+Estetico+e+Smalto') }}"><p>Pedicure Estetico e Smalto<span class="price">€ 20</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Pedicure+Curativo+e+Smalto') }}"><p>Pedicure Curativo e Smalto<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Pedicure+Estetico+e+Semipermanente') }}"><p>Pedicure Estetico e Semipermanente<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Pedicure+Curativo+e+Semipermanente') }}"><p>Pedicure Curativo e Semipermanente<span class="price">€ 40</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Rimozione+Callo') }}"><p>Rimozione Callo<span class="price">€ 5</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Applicazione+Smalto') }}"><p>Applicazione Smalto<span class="price">€ 5</span></p></a>
+        </div>
+    </div>
+
+    <div class="category-card" id="Viso">
+
+        <div class="princ-cont">
+
+        <h2>Viso</h2>
+
+        <div class="inner-img-cont">
+            <img class="inner-img" src="/static/face.png" alt="nails-img">
+        </div>
+        </div>
+        
+        <div class="subcategories">
+            <a href="{{ url_for('main.calendar', trattamento='Pulizia+Viso') }}"><p>Pulizia Viso<span class="price">€ 35</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Trattamento+Viso+Specifico') }}"><p>Trattamento Viso Specifico<span class="price">€ 45</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Radiofrequenza+Viso') }}"><p>Radiofrequenza Viso<span class="price">€ 35</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Massaggio+Viso+30+min') }}"><p>Massaggio Viso 30 min<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Massaggio+Viso+60+min') }}"><p>Massaggio Viso 60 min<span class="price">€ 50</span></p></a>
+        </div>
+    </div>
+
+    <div class="category-card" id="Depilazione">
+
+        <div class="princ-cont">
+
+        <h2>Depilazione</h2>
+
+        <div class="inner-img-cont">
+            <img class="inner-img" src="/static/depi.png" alt="nails-img">
+        </div>
+        </div>
+        
+        <div class="subcategories">
+            <a href="{{ url_for('main.calendar', trattamento='Gamba+Intera') }}"><p>Gamba Intera<span class="price">€ 20</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Gamba+Intera+e+Inguine+Parziale') }}"><p>Gamba Intera e Inguine Parziale<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Gamba+Intera+e+Inguine+Totale') }}"><p>Gamba Intera e Inguine Totale<span class="price">€ 33</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Mezza+Gamba') }}"><p>Mezza Gamba<span class="price">€ 15</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Mezza+Gamba+e+Inguine+Parziale') }}"><p>Mezza Gamba e Inguine Parziale<span class="price">€ 25</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Mezza+Gamba+e+Inguine+Totale') }}"><p>Mezza Gamba e Inguine Totale<span class="price">€ 28</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Inguine+Parziale') }}"><p>Inguine Parziale<span class="price">€ 12</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Inguine+Totale') }}"><p>Inguine Totale<span class="price">€ 15</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Braccia') }}"><p>Braccia<span class="price">€ 15</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Ascelle') }}"><p>Ascelle<span class="price">€ 6</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Baffetto') }}"><p>Baffetto<span class="price">€ 5</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Sopracciglia') }}"><p>Sopracciglia<span class="price">€ 5</span></p></a>
+        </div>
+    </div>
+
+    <div class="category-card" id="Massaggio">
+
+        <div class="princ-cont">
+
+        <h2>Massaggio</h2>
+
+        <div class="inner-img-cont">
+            <img class="inner-img" src="/static/massage.png" alt="nails-img">
+        </div>
+        </div>
+        
+        <div class="subcategories">
+            <a href="{{ url_for('main.calendar', trattamento='Massaggio+30+min') }}"><p>Massaggio 30 min<span class="price">€ 30</span></p></a>
+            <a href="{{ url_for('main.calendar', trattamento='Massaggio+60+min') }}"><p>Massaggio 60 min<span class="price">€ 50</span></p></a>
+        </div>
+    </div>
+
+    <div class="category-card" id="Corpo">
+
+        <div class="princ-cont">
+
+        <h2>Corpo</h2>
+
+        <div class="inner-img-cont">
+            <img class="inner-img" src="/static/body.png" alt="nails-img">
+        </div>
+        </div>
+        
+        <div class="subcategories">
+            <a href="{{ url_for('main.calendar', trattamento='Radiofrequenza') }}"><p>Radiofrequenza<span class="price">€ 40</span></p></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

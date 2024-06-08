@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Grazie per la tua Prenotazione{% endblock %}
+
+{% block content %}
+<title>Grazie per la tua Prenotazione</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='thankYouPage.css') }}">
+
+<div class="message-cont">
+<h1>Grazie per la tua Prenotazione!</h1>
+<p>La tua prenotazione è stata confermata.</p>
+<p>Riceverai una Conferma via SMS, con un codice prenotazione<br>
+che potrai inserire nella pagina 'Appuntamenti', per visualizzare, <br>
+annullare o modificare tutti i tuoi Appuntamenti programmati!</p>
+</div>
+
+<div class="buttons">
+
+    <a href="/booking">
+    <div class="button1-cont">Prenota un altro Appuntamento</div>
+    </a>
+
+    <a href="/trattamenti">
+        <div class="button1-cont">Vedi tutti i tuoi Appuntamenti</div>
+        </a>
+
+    </div>
+
+{% endblock %}

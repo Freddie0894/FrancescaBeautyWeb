@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Contatti{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='contatti.css') }}">
+    
+
+    <div class="container">
+        <h1 class="contatti-title">Contatti</h1>
+
+        <div class="form-cont">
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Nome" required>
+
+                <input type="email" id="email" placeholder="Email" required>
+
+                <input type="text" id="subject" placeholder="Oggetto" required>
+                
+                <textarea id="message" rows="5" placeholder="Messaggio" required></textarea>
+
+                <button type="submit">Invia</button> 
+            </form>
+
+            <script src="{{ url_for('static', filename='contact_form.js') }}"></script>
+
+        </div>
+       
+    </div>
+
+{% endblock %}

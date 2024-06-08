@@ -1,0 +1,132 @@
+.contatti-title {
+    width: 400px;
+    text-align: center;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 40px;
+}
+
+.form-cont {
+    display: flex;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    border: 1px solid white;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.205);
+}
+
+input {
+    width: 350px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(100, 100, 100, 0.3);
+}
+
+input::placeholder {
+    color: white;
+}
+
+textarea {
+    width: 350px;
+    height: 250px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(100, 100, 100, 0.3);
+}
+
+textarea::placeholder {
+    color: white;
+}
+
+button {
+    width: 250px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(149, 110, 169);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s ease;
+}
+
+BUTTON:hover {
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+    .contatti-title {
+        width: 90%;
+        text-align: center;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        font-size: 40px;
+        margin-top: 100px;
+    }
+    
+    .form-cont {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+        border: 1px solid white;
+        padding: 30px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.205);
+    }
+    
+    input {
+        width: 80%;
+        height: 40px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    input::placeholder {
+        color: white;
+    }
+    
+    textarea {
+        width: 80%;
+        height: 250px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(100, 100, 100, 0.3);
+    }
+    
+    textarea::placeholder {
+        color: white;
+    }
+    
+    button {
+        width: 250px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(149, 110, 169);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: 0.3s ease;
+    }
+    
+    BUTTON:hover {
+        background-color: rgb(0, 0, 0);
+        transform: scale(1.1);
+    }
+}

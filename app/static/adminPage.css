@@ -1,0 +1,188 @@
+
+
+.fc-col-header-cell-cushion {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.fc-scrollgrid-sync-inner {
+    height: 50px;
+}
+
+/* caselle */
+.fc-timegrid-event {
+    background-color: rgb(213, 24, 255);
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+    height: fit-content;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.682);
+    border-radius: 10px;
+}
+
+.fc .fc-timegrid-slot-minor {
+    border-top-style: dotted;
+    height: 34px;
+}
+
+.fc .fc-timegrid-slot {
+    border-bottom: 0px;
+    height: 34px;
+}
+
+.fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.682);
+    border-radius: 10px;
+    font-size: 0.5em;
+    font-size: 18px;
+    font-family: arial;
+    text-align: center;
+}
+
+.fc-timegrid-event-harness {
+    position: absolute;
+    height: fit-content;
+    left: 0;
+    padding: 0;
+}
+
+.fc .fc-view-harness-active > .fc-view {
+    inset: 0px;
+    position: absolute;
+    width: 800px;
+    margin: auto;
+}
+
+
+
+.fc-event-title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.fc-event-time {
+    display: none;
+}
+
+.fc-scrollgrid.fc-scrollgrid-liquid {
+    background-color: white;
+    border-radius: 10px;
+    height: 625px;
+    width: 800px;
+    margin: auto;
+}
+
+.fc-header-toolbar.fc-toolbar, h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 800px;
+    margin: auto;
+    font-size: 20px;
+    color: white;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 500px;
+    margin: auto;
+    font-size: 40px;
+    color: white;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+    .fc-col-header-cell-cushion {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+    
+    .fc-scrollgrid-sync-inner {
+        height: 50px;
+    }
+    
+    
+
+    .fc-timegrid-event {
+        background-color: rgb(213, 24, 255);
+        border: 1px solid transparent;
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+        height: fit-content;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.682);
+        border-radius: 10px;
+    }
+    
+    .fc .fc-timegrid-slot-minor {
+        border-top-style: dotted;
+        height: 32px;
+    }
+    
+    .fc .fc-timegrid-slot {
+        border-bottom: 0px;
+        height: 32px;
+    }
+    
+    .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+        height: fit-content;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.682);
+        border-radius: 10px;
+        font-size: 20px;
+        font-family: arial;
+        text-align: center;
+    }
+    
+    
+    .fc-timegrid-slot.fc-timegrid-slot-lane {
+        height: 30px;
+    }
+    
+    .fc-event-title {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 5px;
+    }
+    
+    .fc-event-time {
+        display: none;
+    }
+    
+    .fc-scrollgrid.fc-scrollgrid-liquid {
+        background-color: white;
+        border-radius: 10px;
+        height: 1025px;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 100px;
+    }
+    
+    .fc-header-toolbar.fc-toolbar, h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+    }
+    
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        font-size: 30px;
+        color: white;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+    
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/layout.css">
+    <title>Francesca Beauty</title>
+</head>
+<body>
+
+     <!-- Navbar -->
+     <nav>
+        <img class="fraLogo" src="/static/fraLogo.png" alt="fra logo">
+        <a href="/">Home</a>
+        <a href="/booking">Prenota ora</a>
+        <a href="/trattamenti">Trattamenti</a>
+        <a href="/contatti">Contatti</a>
+        <a href="/adminPage">adminPage</a>
+    </nav>
+
+    <!-- menu laterale solo x smartphone -->
+    <div class="menu-button" onclick="toggleMenu()">☰</div>
+
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="/">Home</a>
+        <a href="/booking">Prenota ora</a>
+        <a href="/trattamenti">Trattamenti</a>
+        <a href="/contatti">Contatti</a>
+        <a href="/adminPage">adminPage</a>
+    </div>
+
+
+    {% block content %}{% endblock %}
+
+    <video autoplay muted loop id="video-background">
+        <source src="{{ url_for('static', filename='beautyvid.webm') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function toggleMenu() {
+            var sideMenu = document.getElementById("sideMenu");
+            if (sideMenu.style.width === "250px") {
+                sideMenu.style.width = "0";
+            } else {
+                sideMenu.style.width = "250px";
+            }
+        }
+    </script>
+
+   
+</body>
+</html> 
