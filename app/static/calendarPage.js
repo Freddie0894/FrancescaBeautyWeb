@@ -27,13 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
         'Pedicure Curativo e Semipermanente':60,
         'Rimozione Callo': 15,
         'Applicazione Smalto': 15,
+
         'Pulizia Viso': 60,
-        'Trattamento Viso Anti-Age': 60,
+        'Trattamento Viso Anti Age': 60,
         'Trattamento Viso Illuminante': 45,
         'Trattamento Viso Idratante': 45,
         'Trattamento Viso Purificante': 45,
         'Trattamento Viso Pelli Sensibili': 45,
         'Radiofrequenza Viso': 45,
+
         'Gamba Intera': 30,
         'Gamba Intera e Inguine Parziale': 45,
         'Gamba Intera e Inguine Totale': 45,
@@ -42,19 +44,22 @@ document.addEventListener('DOMContentLoaded', function() {
         'Mezza Gamba e Inguine Totale': 30,
         'Inguine Parziale': 15,
         'Inguine Totale': 15,
+        'Braccia': 15,
         'Ascelle': 15,
         'Baffetto': 15,
-        'Braccia': 15,
         'Sopracciglia': 15,
+
         'Massaggio Anticellulite': 30, 
         'Massaggio Drenante': 30, 
         'Massaggio Schiena Decontratturante': 30, 
         'Massaggio Gravidanza': 30, 
         'Massaggio Rilassante 30 Min': 30, 
         'Massaggio Rilassante 60 Min': 60, 
-        'Radiofrequenza Corpo': 45,
+
         'Laminazione Ciglia': 60,
-        'Laminazione Sopracciglia': 45
+        'Laminazione Sopracciglia': 45,
+        
+        'Radiofrequenza Corpo': 45,
     };
 
 

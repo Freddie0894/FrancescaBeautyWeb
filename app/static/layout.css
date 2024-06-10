@@ -82,10 +82,12 @@ nav a:hover {
     z-index: -1;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 512px) {
 
     body {
         font-family: Arial, Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
     }
     
     nav a {
@@ -112,13 +114,7 @@ nav a:hover {
         margin-top: 100px;
     }
 
-    #video-background {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        overflow: hidden;
-        z-index: -1; 
-    }
+    
 
 }
 

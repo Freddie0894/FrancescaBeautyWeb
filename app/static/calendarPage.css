@@ -1,21 +1,25 @@
 h1 {
+    display: flex;
+    flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-align: center;
     font-size: 25px;
-    width: 800px;
-    margin: auto;
+    width: 100%;
     margin-top: -10px;
+    justify-content: center;
 }
 
 #calendar-container {
     background-color: #ffffff;
     width: 400px;
     margin: auto;
-    margin-top: 0px;
+    margin-top: 30px;
     border: 1px solid white;
     border-radius: 5px;
 }
+
+
 
 /* BOTTONI NAVIGAZIONE */
 #week-navigation {
@@ -127,7 +131,7 @@ h1 {
     display: flex;
     flex-direction: column;
     margin-top: 1px;
-    height: 350px;
+    height: 300px;
     overflow-y: auto;
     scrollbar-color: violet #ffffff;
 }
@@ -151,9 +155,242 @@ h1 {
     color: white;
 }
 
+.button-return {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: rgba(149, 110, 169);
+    width: 200px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 0.5px solid rgba(255, 255, 255, 0.619);
+    transition: 0.3s ease;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.button-return:hover {
+    transform: scale(1.1);
+    background-color: black;
+}
+
+a {
+    text-decoration-line: none;
+    color: white;
+}
+
 .message-full {
     margin: auto;
     font-size: 25px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 512px) {
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    h1 {
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+        width: 100%;
+        margin-top: -10px;
+        justify-content: center;
+        margin-top: 130px;
+    }
+    
+    #calendar-container {
+        position: absolute;
+        top: 0;
+        background-color: #ffffff;
+        width: 100%;
+        height: 100vh;
+        margin-top: 0px;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    
+    
+    /* BOTTONI NAVIGAZIONE */
+    #week-navigation {
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+        height: 60px;
+    }
+    
+    #prev-week {
+        border: none;
+        background-color: transparent;
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
+        padding: 10px;
+        margin-right: 20px;
+        transition: 0.3s ease;
+    }
+    
+    #prev-week:hover {
+        transform: scale(1.3);
+    }
+    
+    .month-title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+    }
+    
+    #next-week {
+        border: none;
+        background-color: transparent;
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
+        margin-left: 20px;
+        padding: 10px;
+        transition: 0.3s ease;
+    }
+    
+    #next-week:hover {
+        transform: scale(1.3);
+    }
+    
+    
+    /* BOTTONI SETTIMANA */
+    #week-days {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0px 1px 0px 0px black;
+    }
+    
+    .day-name { /* NOMI GIORNI */
+        padding: 10px;
+        width: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .day-button { /* BOTTONI GIORNI */
+        margin: 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: violet;
+        border-radius: 3px;
+        transition: 0.3s ease;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+    }
+    
+    .day-button:hover {
+        transform: scale(1.2);
+    }
+    
+    .day-button.active {
+        transform: scale(1.2);
+        background-color: rgb(0, 0, 0);
+        color: white;
+    }
+    
+    /* CELLE ORARI */
+    .time-slot-button {
+        background-color: violet;
+        width: 100px;
+        margin: 3px;
+        margin-left: 30px;
+        margin-top: 10px;
+        border: none;
+        transition: 0.3s ease;
+        border-radius: 2px;
+        font-weight: 500;
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    .time-slot-button:hover{
+        transform: scale(1.2);
+    }
+    
+    .time-slot-button.active {
+        transform: scale(1.2);
+        background-color: rgb(0, 0, 0);
+        color: white;
+    }
+    
+    /* GRIGLIA ORARI */
+    #day-grid {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1px;
+        height: 70%;
+        overflow-y: auto;
+        scrollbar-color: violet #ffffff;
+    }
+    
+    .prosegui-button {
+        width: 300px;
+        height: 40px;
+        font-size: 18px;
+        color: white;
+        font-weight: 600;
+        background-color: rgba(149, 110, 169);
+        border: none;
+        transition: 0.3s ease;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
+    
+    .prosegui-button:hover {
+        transform: scale(1.2);
+        background-color: rgb(0, 0, 0);
+        color: white;
+    }
+
+    #form-appuntamento {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+    }
+    
+    .button-return {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: white;
+        background-color: rgba(149, 110, 169);
+        width: 180px;
+        border-radius: 3px;
+        border: 0.5px solid rgba(255, 255, 255, 0.619);
+        transition: 0.3s ease;
+        font-size: 18px;
+        margin: auto;
+        margin-top: 10px;
+    }
+    
+    .button-return:hover {
+        transform: scale(1.1);
+        background-color: black;
+    }
+    
+    a {
+        text-decoration-line: none;
+        color: white;
+    }
+    
+    .message-full {
+        margin: auto;
+        font-size: 25px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }

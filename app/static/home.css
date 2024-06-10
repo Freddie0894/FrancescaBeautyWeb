@@ -78,7 +78,7 @@ a {
     text-decoration-line: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 512px) {
     .container {
         width: 100%;
         overflow: hidden;
@@ -132,7 +132,7 @@ a {
         display: flex;
         flex-direction: column;
         z-index: 9999;
-        width: 250px;
+        width: 300px;
         margin: auto;
         margin-top: 150px;
     }
@@ -142,9 +142,11 @@ a {
         text-align: center;
         color: white;
         background-color: rgba(149, 110, 169);
-        width: 200px;
-        height: 20px;
-        margin: auto;
+        width: 250px;
+        height: 30px;
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 25px;
         border-radius: 3px;
         border: 0.5px solid rgba(255, 255, 255, 0.619);

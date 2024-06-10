@@ -95,16 +95,29 @@ h1 {
     margin-bottom: 50px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 512px) {
+    .body {
+        width: 100% !important;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+    }
+
     .fc-col-header-cell-cushion {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 30px;
+        margin: 0px;
     }
     
     .fc-scrollgrid-sync-inner {
         height: 50px;
     }
     
+    #admin-calendar {
+        width: 100%;
+    }
     
 
     .fc-timegrid-event {
@@ -159,9 +172,8 @@ h1 {
     .fc-scrollgrid.fc-scrollgrid-liquid {
         background-color: white;
         border-radius: 10px;
-        height: 1025px;
+        height: 1350px;
         width: 100%;
-        margin: auto;
         margin-bottom: 100px;
     }
     
@@ -183,6 +195,24 @@ h1 {
         color: white;
         margin-top: 100px;
         margin-bottom: 50px;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.75em;
+        margin: 0px;
+        font-size: 25px;
+    }
+
+    .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 1.5em;
+        width: 90%;
+    }
+
+    .fc .fc-view-harness-active > .fc-view {
+        inset: 0px;
+        position: relative;
+        width: fit-content;
+        margin: auto;
     }
     
 }
