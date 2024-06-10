@@ -12,13 +12,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const durataTrattamenti = {
-        'Manicure': 60,
-        'Manicure e Smalto': 60,
-        'Manicure e Copertura Gel': 60,
+        'Manicure': 30,
+        'Manicure e Smalto': 30,
         'Manicure e Semipermanente': 45,
+        'Manicure e Semipermanente con Rimozione': 60,
+        'Rimozione Semipermanente Mani': 15,
+        'Rimozione Semipermanente Piedi': 15,
+        'Manicure e Ricostruzione Unghie': 120,
+        'Manicure e Copertura Gel': 60,
+        'Manicure e Refill Gel': 60,
+        'Pedicure Estetico e Smalto': 30,
+        'Pedicure Curativo e Smalto': 45,
+        'Pedicure Estetico e Semipermanente': 45,
+        'Pedicure Curativo e Semipermanente':60,
+        'Rimozione Callo': 15,
+        'Applicazione Smalto': 15,
+        'Pulizia Viso': 60,
+        'Trattamento Viso Anti-Age': 60,
+        'Trattamento Viso Illuminante': 45,
+        'Trattamento Viso Idratante': 45,
+        'Trattamento Viso Purificante': 45,
+        'Trattamento Viso Pelli Sensibili': 45,
+        'Radiofrequenza Viso': 45,
+        'Gamba Intera': 30,
+        'Gamba Intera e Inguine Parziale': 45,
+        'Gamba Intera e Inguine Totale': 45,
+        'Mezza Gamba': 15,
+        'Mezza Gamba e Inguine Parziale': 30,
+        'Mezza Gamba e Inguine Totale': 30,
+        'Inguine Parziale': 15,
+        'Inguine Totale': 15,
+        'Ascelle': 15,
+        'Baffetto': 15,
+        'Braccia': 15,
         'Sopracciglia': 15,
-        'Braccia': 600
+        'Massaggio Anticellulite': 30, 
+        'Massaggio Drenante': 30, 
+        'Massaggio Schiena Decontratturante': 30, 
+        'Massaggio Gravidanza': 30, 
+        'Massaggio Rilassante 30 Min': 30, 
+        'Massaggio Rilassante 60 Min': 60, 
+        'Radiofrequenza Corpo': 45,
+        'Laminazione Ciglia': 60,
+        'Laminazione Sopracciglia': 45
     };
+
 
     function calculateEndTime(date, time, durataInMinuti) {
         const dateTimeString = `${date}T${time}`;
@@ -65,95 +103,108 @@ document.addEventListener('DOMContentLoaded', function() {
         button.classList.add('active');
     }
 
+        // funzione x gestire click bottone
+        function ButtonClick_PrevWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+            generateWeekDayButtons();
+        }
     
-
-
+        // funzione x gestire click bottone
+        function ButtonClick_NextWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+            generateWeekDayButtons();
+        }
+    
+        // funzione x click su un giorno della settimana
+        function ButtonClick_Day(event) {
+            var selectedDate = event.target.getAttribute('data-date');
+            createCalendarForDate(selectedDate);
+        }
+    
     /* CALENDARIO */ 
 
     // funzione x creare calendario a data specifica
-    async function createCalendarForDate(selectedDate) {
-        return fetch(`/api/prenotazionilist?date=${selectedDate}`)
-            .then(response => response.json())
-            .then(prenotazioniEsistenti => {
-                // rimuovi eventuali contenuti precedenti
-                dayGridContainer.innerHTML = '';
+    async function createCalendarForDate(selectedDate, prenotazione = null) {
+        let url = `/api/prenotazioniget?date=${selectedDate}`;
+        if (prenotazione) {
+            url += `&trattamento=${prenotazione}`;
+        }
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const prenotazioniEsistenti = await response.json();
+            console.log('Prenotazioni esistenti:', prenotazioniEsistenti);
 
-                //orario di apertura
-                const openingHour = 9;
-                const closingHour = 18.5;
-                const durata = durataTrattamenti[trattamento];
+            // Reset dei campi del modulo per data e orario quando viene cliccato un nuovo giorno
+            document.getElementById('selected-date').value = '';
+            document.getElementById('selected-time').value = '';
+            document.getElementById('form-appuntamento').style.display = 'none';
+            
+            // rimuovi eventuali contenuti precedenti
+            dayGridContainer.innerHTML = '';
 
-                let slotDisponibili = false;
-                const dayOfWeek = new Date(selectedDate).getDay();
+            //orario di apertura
+            const openingHour = 9;
+            const closingHour = 18.5;
+            const durata = durataTrattamenti[trattamento];
 
-                // messaggio full
-                for (let hour = openingHour; hour <= closingHour; hour += 0.25) {
-                    let startTime = new Date(selectedDate);
-                    startTime.setHours(Math.floor(hour));
-                    startTime.setMinutes((hour % 1) * 60);
+            let slotDisponibili = false;
+            const dayOfWeek = new Date(selectedDate).getDay();
 
-                    let endTimeString = calculateEndTime(selectedDate, startTime.toTimeString().slice(0, 5), durata);
-                    let endTime = new Date(endTimeString);
+            console.log(dayOfWeek);
 
-                    if (dayOfWeek === 3 && startTime.getHours() < 12) {
-                        continue;
-                    }
+            // messaggio full
+            for (let hour = openingHour; hour <= closingHour; hour += 0.25) {
+                let startTime = new Date(selectedDate);
+                startTime.setHours(Math.floor(hour));
+                startTime.setMinutes((hour % 1) * 60);
 
-                    if (startTime >= endTime || endTime.getHours() > 19 || (endTime.getHours() == 19 && endTime.getMinutes() > 30) || isOverlapping(startTime, endTime, prenotazioniEsistenti)) {
-                        continue; // salta gli slot che superano l'orario chiusura
-                    } else {
-                        slotDisponibili = true;
-                        let timeString = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        let button = document.createElement('button');
-                        button.classList.add('time-slot-button');
-                        button.textContent = timeString;
-                        button.setAttribute('data-time', timeString);
+                let endTimeString = calculateEndTime(selectedDate, startTime.toTimeString().slice(0, 5), durata);
+                let endTime = new Date(endTimeString);
 
-                        button.addEventListener('click', function() {
-                            date = document.getElementById('selected-date').value = selectedDate; 
-                            time = document.getElementById('selected-time').value = timeString;
-                            document.getElementById('form-appuntamento').style.display = 'block';
-                            setActiveTimeSlot(this);
-                        });
-
-                        dayGridContainer.appendChild(button);
-                    }
+                if (dayOfWeek === 3 && startTime.getHours() < 12) {
+                    continue;
                 }
 
-                if (!slotDisponibili) {
-                    let fullMessage = document.createElement('p');
-                    fullMessage.classList.add('message-full');
-                    fullMessage.innerHTML = "Nessun orario disponibile<br>per questo giorno.";
-                    dayGridContainer.appendChild(fullMessage);
+                if (startTime >= endTime || endTime.getHours() > 19 || (endTime.getHours() == 19 && endTime.getMinutes() > 30) || isOverlapping(startTime, endTime, prenotazioniEsistenti)) {
+                    continue; // salta gli slot che superano l'orario chiusura
+                } else {
+                    slotDisponibili = true;
+                    let timeString = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    let button = document.createElement('button');
+                    button.classList.add('time-slot-button');
+                    button.textContent = timeString;
+                    button.setAttribute('data-time', timeString);
+
+                    button.addEventListener('click', function() {
+                        date = document.getElementById('selected-date').value = selectedDate; 
+                        time = document.getElementById('selected-time').value = timeString;
+                        document.getElementById('form-appuntamento').style.display = 'block';
+                        setActiveTimeSlot(this);
+                    });
+
+                    dayGridContainer.appendChild(button);
                 }
+            }
 
-                return slotDisponibili;
-            })
-            .catch(error => {
-                console.error('Errore nel recupero delle prenotazioni:', error);
-                return false;
-            });
+            if (!slotDisponibili) {
+                let fullMessage = document.createElement('p');
+                fullMessage.classList.add('message-full');
+                fullMessage.innerHTML = "Nessun orario disponibile<br>per questo giorno.";
+                dayGridContainer.appendChild(fullMessage);
+            }
+            return slotDisponibili;
+                
+        }catch(error) {
+            console.error('Errore nel recupero delle prenotazioni:', error);
+            return false;
+        }
     }
 
 
-
-    // funzione x gestire click bottone
-    function ButtonClick_PrevWeek() {
-        currentWeekStart.setDate(currentWeekStart.getDate() - 7);
-        generateWeekDayButtons();
-    }
-
-    // funzione x gestire click bottone
-    function ButtonClick_NextWeek() {
-        currentWeekStart.setDate(currentWeekStart.getDate() + 7);
-        generateWeekDayButtons();
-    }
-
-    // funzione x click su un giorno della settimana
-    function ButtonClick_Day(event) {
-        var selectedDate = event.target.getAttribute('data-date');
-        createCalendarForDate(selectedDate);
-    }
 
 // Funzione per generare i bottoni dei giorni della settimana
 async function generateWeekDayButtons() {

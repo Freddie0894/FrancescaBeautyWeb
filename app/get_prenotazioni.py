@@ -4,9 +4,19 @@ from . import db
 
 get_prenotazioni_bp = Blueprint('get_prenotazioni', __name__)
 
-@get_prenotazioni_bp.route('/api/prenotazionilist', methods=['GET'])
+@get_prenotazioni_bp.route('/api/prenotazioniget', methods=['GET'])
 def get_prenotazioni():
-    appointments = Appointment.query.all()
+
+    trattamento = request.args.get('trattamento', None)
+    date = request.args.get('date', None)
+
+    query = Appointment.query
+    if trattamento:
+        query = query.filter_by(trattamento=trattamento)
+    if date:
+        query = query.filter(Appointment.data == date)
+
+    appointments = query.all()
     appointments_list = [{
         'id': appointment.id,
         'nome': appointment.nome,

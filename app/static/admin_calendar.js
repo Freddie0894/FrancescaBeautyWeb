@@ -3,12 +3,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // durata trattamenti
     const durataTrattamenti = {
-        'Manicure': 60,
-        'Manicure e Smalto': 60,
-        'Manicure e Copertura Gel': 60,
+        'Manicure': 30,
+        'Manicure e Smalto': 30,
         'Manicure e Semipermanente': 45,
+        'Manicure e Semipermanente con Rimozione': 60,
+        'Rimozione Semipermanente Mani': 15,
+        'Rimozione Semipermanente Piedi': 15,
+        'Manicure e Ricostruzione Unghie': 120,
+        'Manicure e Copertura Gel': 60,
+        'Manicure e Refill Gel': 60,
+        'Pedicure Estetico e Smalto': 30,
+        'Pedicure Curativo e Smalto': 45,
+        'Pedicure Estetico e Semipermanente': 45,
+        'Pedicure Curativo e Semipermanente':60,
+        'Rimozione Callo': 15,
+        'Applicazione Smalto': 15,
+        'Pulizia Viso': 60,
+        'Trattamento Viso Anti-Age': 60,
+        'Trattamento Viso Illuminante': 45,
+        'Trattamento Viso Idratante': 45,
+        'Trattamento Viso Purificante': 45,
+        'Trattamento Viso Pelli Sensibili': 45,
+        'Radiofrequenza Viso': 45,
+        'Gamba Intera': 30,
+        'Gamba Intera e Inguine Parziale': 45,
+        'Gamba Intera e Inguine Totale': 45,
+        'Mezza Gamba': 15,
+        'Mezza Gamba e Inguine Parziale': 30,
+        'Mezza Gamba e Inguine Totale': 30,
+        'Inguine Parziale': 15,
+        'Inguine Totale': 15,
+        'Ascelle': 15,
+        'Baffetto': 15,
+        'Braccia': 15,
         'Sopracciglia': 15,
-        'Braccia': 30
+        'Massaggio Anticellulite': 30, 
+        'Massaggio Drenante': 30, 
+        'Massaggio Schiena Decontratturante': 30, 
+        'Massaggio Gravidanza': 30, 
+        'Massaggio Rilassante 30 Min': 30, 
+        'Massaggio Rilassante 60 Min': 60, 
+        'Radiofrequenza Corpo': 45,
+        'Laminazione Ciglia': 60,
+        'Laminazione Sopracciglia': 45
     };
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -27,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hour12: false
         },
         events: function(fetchInfo, successCallback, failureCallback) {
-            fetch('/api/prenotazionilist')
+            fetch('/api/prenotazioniget')
             .then(response => response.json())
             .then(data => {
 
