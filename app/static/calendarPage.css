@@ -187,6 +187,16 @@ a {
 }
 
 @media (max-width: 512px) {
+    .calendar-page {
+       position: absolute;
+       top: 0;
+       width: 100%;
+    }
+
+   nav {
+        display: none;
+    }
+    
     body {
         font-family: Arial, Helvetica, sans-serif;
         padding: 0;
@@ -207,16 +217,17 @@ a {
         font-size: 20px;
         width: 100%;
         justify-content: center;
-        margin-top: 25%;
+        margin-top: 5%;
+        background-color: #ffffff;
     }
     
     #calendar-container {
         background-color: #ffffff;
         width: 100%;
-        height: 90%;
+        height: 100%;
         margin: auto;
         padding: 0;
-        margin-top: 0px;
+        margin-top: 40px;
         border: none;
         border-radius: 0px;
     }
@@ -228,15 +239,15 @@ a {
         display: flex;
         justify-content: center;
         padding-top: 0px;
-        height: 40px;
+        height: 30px;
     }
     
     #prev-week {
         border: none;
         background-color: transparent;
-        height: 40px;
+        height: 30px;
         width: 50px;
-        font-size: 40px;
+        font-size: 30px;
         margin-right: 20px;
         padding-top: 0;
         transition: 0.3s ease;
@@ -248,7 +259,7 @@ a {
     
     .month-title {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 300;
         margin: 0;
     }
@@ -258,7 +269,7 @@ a {
         background-color: transparent;
         height: 40px;
         width: 50px;
-        font-size: 40px;
+        font-size: 30px;
         margin-left: 20px;
         padding-top: 0;
         transition: 0.3s ease;
@@ -273,7 +284,7 @@ a {
     #week-days {
         display: flex;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 0px;
         padding-bottom: 10px;
         border-bottom: 1px solid black;
     }
@@ -338,14 +349,14 @@ a {
         flex-direction: column;
         width: 98%;
         margin-top: 1px;
-        height: 400px;
+        height: 60vh;
         overflow-y: auto;
         scrollbar-color: violet #ffffff;
     }
     
     .prosegui-button {
-        width: 300px;
-        height: 40px;
+        width: 150px;
+        height: 50px;
         font-size: 18px;
         color: white;
         font-weight: 600;
@@ -353,7 +364,8 @@ a {
         border: none;
         transition: 0.3s ease;
         border-radius: 3px;
-        margin-top: 10px;
+        margin-right: 30px;
+        margin-bottom: 40px;
     }
     
     .prosegui-button:hover {
@@ -363,9 +375,11 @@ a {
     }
 
     #form-appuntamento {
+        position: absolute;
+        bottom: 7%;
         width: 100%;
-        height: 50px;
-        text-align: center;
+        height: 0px;
+        text-align: right;
     }
     
     .button-return {
