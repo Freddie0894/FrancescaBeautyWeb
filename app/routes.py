@@ -25,15 +25,25 @@ def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
     )
 
 
-# Imposta la localizzazione italiana
-locale.setlocale(locale.LC_TIME, 'it_IT.UTF-8')
-
+# Dizionario per la traduzione dei mesi
+MONTHS_IT = {
+    'January': 'Gennaio', 'February': 'Febbraio', 'March': 'Marzo', 'April': 'Aprile',
+    'May': 'Maggio', 'June': 'Giugno', 'July': 'Luglio', 'August': 'Agosto',
+    'September': 'Settembre', 'October': 'Ottobre', 'November': 'Novembre', 'December': 'Dicembre'
+}
 
 # filtro per formattazione data in frontend
 def datetimeformat(value, format='%d %B %Y'):
     if isinstance(value, str):
         value = datetime.strptime(value, '%Y-%m-%d')
-    return value.strftime(format)
+
+    month_name = value.strftime('%B') #mese in inglese
+    month_it_name = MONTHS_IT.get(month_name, month_name) #traduci, oppure usa originale
+
+    #sostituisco mese in inglese con traduzione
+    formatted_value = value.strftime(format).replace(month_name, month_it_name)
+
+    return formatted_value
 
 
 
