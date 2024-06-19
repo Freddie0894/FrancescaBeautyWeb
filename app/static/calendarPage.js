@@ -126,6 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
             createCalendarForDate(selectedDate);
         }
     
+     
+    
     /* CALENDARIO */ 
 
     // funzione x creare calendario a data specifica

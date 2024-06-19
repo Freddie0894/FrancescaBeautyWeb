@@ -11,17 +11,29 @@ main_bp = Blueprint('main', __name__)
 
 # Leggi le credenziali Twilio dalle variabili d'ambiente
 account_sid = 'AC7f23b0e7b5d26a1833b1f9885cd0884f'
-auth_token = '5ab4cd53f62057f6f84e32bb6995c510'
+auth_token = '0e9f9e7532289727c763ebdf121133ae'
 twilio_phone_number = '+19143689478'
 
 
-def send_booking_key(phone, nome, formatted_data, ora, trattamento, booking_key):
+def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
+    formatted_data = datetimeformat(data)
     client = Client(account_sid, auth_token)
     message = client.messages.create(
         body=f"Ciao {nome}, La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata. puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I Tuoi Appuntamenti' del sito: {booking_key}",
         from_=twilio_phone_number,
         to=phone
     )
+
+
+# Imposta la localizzazione italiana
+locale.setlocale(locale.LC_TIME, 'it_IT.UTF-8')
+
+
+# filtro per formattazione data in frontend
+def datetimeformat(value, format='%d %B %Y'):
+    if isinstance(value, str):
+        value = datetime.strptime(value, '%Y-%m-%d')
+    return value.strftime(format)
 
 
 
@@ -64,7 +76,10 @@ def booking_confirm():
     data = request.form.get('data')
     ora = request.form.get('ora')
 
-    return render_template('booking_confirm.html', trattamento=trattamento, data=data, ora=ora)
+    # Formatta la data utilizzando la funzione datetimeformat
+    formatted_data = datetimeformat(data, '%d %B %Y')
+
+    return render_template('booking_confirm.html', trattamento=trattamento, formatted_data=formatted_data, data=data, ora=ora)
 
 
 
