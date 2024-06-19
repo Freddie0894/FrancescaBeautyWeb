@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from .models import Appointment
 from . import db
+from twilio.rest import Client
 
 get_prenotazioni_bp = Blueprint('get_prenotazioni', __name__)
 
@@ -23,9 +24,11 @@ def get_prenotazioni():
         'trattamento': appointment.trattamento,
         'data': appointment.data,
         'ora': appointment.ora,
-        'phone': appointment.phone
+        'phone': appointment.phone,
+        'booking_key': appointment.booking_key
     } for appointment in appointments]
     return jsonify(appointments_list)
+
 
 
 
@@ -58,11 +61,13 @@ def add_prenotazione():
 
     db.session.add(new_appointment)
     db.session.commit()
+
     return jsonify({
         'id': new_appointment.id,
         'nome': new_appointment.nome,
         'trattamento': new_appointment.trattamento,
         'data': new_appointment.data,
         'ora': new_appointment.ora,
-        'phone': new_appointment.phone
+        'phone': new_appointment.phone,
+        'booking_key': new_appointment.booking_key
     }), 201

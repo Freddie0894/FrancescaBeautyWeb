@@ -6,24 +6,25 @@
 <title>Conferma Prenotazione</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='confirmationPage.css') }}">
 
-
-
 <div class="prenotazione-card">
     <h1>Conferma la tua prenotazione</h1>
-<p>Servizio: {{ trattamento }}</p>
-<p>Data: {{ data }}</p>
-<p>Ora: {{ ora }}</p>
+    <p>Servizio: {{ trattamento }}</p>
+    <p>Data: {{ data }}</p> 
+    <p>Ora: {{ ora }}</p>
 
-<hr>
+    <hr>
 
-<h2>Inserisci i tuoi dati:</h2>
-<form id="confirmation-form" method="POST" action="{{ url_for('main.finalizza') }}">
-    <input type="hidden" name="trattamento" value="{{ trattamento }}">
-    <input type="hidden" name="data" value="{{ data }}">
-    <input type="hidden" name="ora" value="{{ ora }}">
-    <input type="text" id="nome" name="nome" placeholder="Nome" required>
-    <input type="text" id="phone" name="phone" placeholder="Cellulare" required>
-    <button type="submit">Conferma Prenotazione</button>
-</form>
+    <h2>Inserisci i tuoi dati:</h2>
+    <form id="confirmation-form" method="POST" action="{{ url_for('main.finalizza') }}">
+        <input type="hidden" name="trattamento" value="{{ trattamento }}">
+        <input type="hidden" name="data" value="{{ data }}"> <!-- Manteniamo la data originale -->
+        <input type="hidden" name="ora" value="{{ ora }}">
+        <input type="text" id="nome" name="nome" placeholder="Nome" required>
+        <input type="text" id="phone" name="phone" placeholder="Telefono" required>
+        <div id="phone-error">Numero di telefono non valido.</div>
+        <button type="submit">Conferma Prenotazione</button>
+    </form>
 </div>
+
+<script src="{{ url_for('static', filename='formControl.js') }}"></script>
 {% endblock %}
