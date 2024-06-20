@@ -4,7 +4,6 @@ import urllib.parse
 from app import db
 from twilio.rest import Client
 from datetime import datetime
-import locale
 
 
 main_bp = Blueprint('main', __name__)
