@@ -2,7 +2,6 @@ function calculateEndTime(date, time, duration) {
     const dateTimeString = `${date}T${time}`;
     const start = new Date(dateTimeString);
     start.setMinutes(start.getMinutes() + duration);
-    console.log("start:",start);
     return start;
 }
 
