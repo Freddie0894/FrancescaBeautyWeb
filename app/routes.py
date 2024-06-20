@@ -10,7 +10,7 @@ main_bp = Blueprint('main', __name__)
 
 # Leggi le credenziali Twilio dalle variabili d'ambiente
 account_sid = 'AC7f23b0e7b5d26a1833b1f9885cd0884f'
-auth_token = '0e9f9e7532289727c763ebdf121133ae'
+auth_token = '4da8b9f04045bdd91fe3be45e42f1856'
 twilio_phone_number = '+19143689478'
 
 
