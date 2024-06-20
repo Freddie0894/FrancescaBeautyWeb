@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calculateEndTime(date, time, durataInMinuti) {
         const dateTimeString = `${date}T${time}`;
-        console.log('DateTime String:', dateTimeString);
+        //console.log('DateTime String:', dateTimeString);
 
         const start = new Date(dateTimeString);
         //console.log('Start Date (Original):', start);
 
         start.setMinutes(start.getMinutes() + durataInMinuti);
-        console.log('End Date (After Adding Duration):', start);
+        //console.log('End Date (After Adding Duration):', start);
 
         return start;
     }
