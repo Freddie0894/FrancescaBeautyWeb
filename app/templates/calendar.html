@@ -35,6 +35,9 @@
         <input type="hidden" name="trattamento" value="{{ trattamento }}">
         <input type="hidden" id="selected-date" name="data">
         <input type="hidden" id="selected-time" name="ora">
+        {% if appuntamento_id %}
+        <input type="hidden" name="appuntamentoId" value="{{ appuntamento_id }}">
+        {% endif %}
         <button class="prosegui-button" type="submit">Prosegui</button>
     </form>
 
@@ -44,6 +47,8 @@
 <script>
     // Passa il trattamento come variabile JavaScript
     var trattamento = "{{ trattamento }}";
+    var modifica = "{{ modifica }}";
+    var appuntamentoId = "{{ appuntamentoId }}";
 </script>
 
 <script src="{{ url_for('static', filename='calendarPage.js') }}"></script>

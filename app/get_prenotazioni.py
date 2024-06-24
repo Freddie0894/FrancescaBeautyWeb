@@ -1,10 +1,14 @@
 from flask import Blueprint, request, jsonify
 from .models import Appointment
 from . import db
+from .routes import datetimeformat
 
 
 
 get_prenotazioni_bp = Blueprint('get_prenotazioni', __name__)
+
+
+
 
 @get_prenotazioni_bp.route('/api/prenotazioniget', methods=['GET'])
 def get_prenotazioni():
@@ -75,3 +79,48 @@ def add_prenotazione():
         'phone': new_appointment.phone,
         'booking_key': new_appointment.booking_key
     }), 201
+
+
+
+
+@get_prenotazioni_bp.route('/cercaConCodice', methods=['POST'])
+def cercaConCodice():
+    codice = request.form.get('codice')
+
+    # cerca appuntamenti corrispondenti a codice SMS
+    appuntamentiTrovati = Appointment.query.filter_by(booking_key=codice).all()
+
+    if not appuntamentiTrovati:
+        return jsonify({'success': False, 'message': 'Codice non valido. Riprova.'}), 404
+    
+    # preparo lista appuntamenti trovati
+    appuntamenti = []
+    for appuntamento in appuntamentiTrovati:
+        appuntamenti.append({
+            'id': appuntamento.id,
+            'nome': appuntamento.nome,
+            'trattamento': appuntamento.trattamento,
+            'data': datetimeformat(appuntamento.data),
+            'ora': appuntamento.ora,
+            'phone': appuntamento.phone,
+            'booking_key': appuntamento.booking_key
+        })
+
+    return jsonify({'success': True, 'appuntamenti': appuntamenti}), 200
+
+
+
+
+@get_prenotazioni_bp.route('/cancellaAppuntamento/<int:appuntamento_id>', methods=['DELETE'])
+def cancella_appuntamento(appuntamento_id):
+    appuntamento = Appointment.query.get(appuntamento_id)
+    if appuntamento is None:
+        return jsonify({'success': False, 'message': 'Appuntamento non trovato.'}), 404
+    
+    db.session.delete(appuntamento)
+    db.session.commit()
+    return jsonify({'success': True, 'message': 'Appuntamento cancellato con successo.'}, 200)
+
+
+
+

@@ -6,6 +6,7 @@ from twilio.rest import Client
 from datetime import datetime
 
 
+
 main_bp = Blueprint('main', __name__)
 
 # Leggi le credenziali Twilio dalle variabili d'ambiente
@@ -18,7 +19,7 @@ def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
     formatted_data = datetimeformat(data)
     client = Client(account_sid, auth_token)
     message = client.messages.create(
-        body=f"Ciao {nome}, La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata. puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I Tuoi Appuntamenti' del sito: {booking_key}",
+        body=f"Ciao {nome}, La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata. puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}",
         from_=twilio_phone_number,
         to=phone
     )
@@ -62,9 +63,9 @@ def adminpage():
     return render_template('adminPage.html', appointments=appointments)
 
 
-@main_bp.route('/trattamenti')
+@main_bp.route('/promozioni')
 def trattamenti():
-    return render_template('trattamenti.html')
+    return render_template('promozioni.html')
 
 
 @main_bp.route('/contatti')
@@ -79,6 +80,13 @@ def calendar():
     return render_template('calendar.html', trattamento=trattamento)
 
 
+
+@main_bp.route('/appuntamenti_cliente')
+def clientepage():
+    return render_template('appuntamenti_cliente.html')
+
+
+
 @main_bp.route('/booking_confirm', methods=['POST'])
 def booking_confirm():
     trattamento = request.form.get('trattamento')
@@ -89,8 +97,6 @@ def booking_confirm():
     formatted_data = datetimeformat(data, '%d %B %Y')
 
     return render_template('booking_confirm.html', trattamento=trattamento, formatted_data=formatted_data, data=data, ora=ora)
-
-
 
 
 
