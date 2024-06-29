@@ -177,15 +177,15 @@ input.button-cerca:hover {
         width: 290px;
         margin: auto;
         height: 250px;
-        padding: 20px;
+        padding-top: 20px;
         text-align: center;
         color: white;
-        font-size: 15px;
+        font-size: 18px;
         font-family: Arial, Helvetica, sans-serif;
     }
     
     .trattamento {
-        font-size: 30px;
+        font-size: 40px;
         margin-bottom: 10px;
     }
     
