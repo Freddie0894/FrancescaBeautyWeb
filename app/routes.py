@@ -1,28 +1,62 @@
-from flask import Blueprint, request, render_template, redirect, url_for
+from __future__ import print_function
+import clicksend_client
+from clicksend_client import SmsMessage
+from clicksend_client.rest import ApiException
+from flask import Blueprint, request, redirect, url_for, render_template
+import logging
 from app.models import Appointment
 import urllib.parse
 from app import db
-from twilio.rest import Client
 from datetime import datetime
 
+logging.basicConfig(level=logging.INFO)
 
+CLICKSEND_USERNAME = 'francescabeauty'
+CLICKSEND_API_KEY = '9742328E-0718-0589-1F18-0084E4BB3521'
 
 main_bp = Blueprint('main', __name__)
 
-# Leggi le credenziali Twilio dalle variabili d'ambiente
-account_sid = 'AC7f23b0e7b5d26a1833b1f9885cd0884f'
-auth_token = '4da8b9f04045bdd91fe3be45e42f1856'
-twilio_phone_number = '+19143689478'
+
+
 
 
 def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
     formatted_data = datetimeformat(data)
-    client = Client(account_sid, auth_token)
-    message = client.messages.create(
-        body=f"Ciao {nome}, La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata. puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}",
-        from_=twilio_phone_number,
+    # client = Client(account_sid, auth_token)
+    message = f"""
+    Ciao {nome},
+    
+    La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata.
+    Puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}
+    
+    Grazie,
+    Francesca Beauty
+    """
+
+    configuration = clicksend_client.Configuration()
+    configuration.username = CLICKSEND_USERNAME
+    configuration.password = CLICKSEND_API_KEY
+
+    api_instance = clicksend_client.SMSApi(clicksend_client.ApiClient(configuration))
+    
+    sms_message = SmsMessage(
+        source="python",
+        body=message,
         to=phone
     )
+
+    sms_messages = clicksend_client.SmsMessageCollection(messages=[sms_message])
+
+    try:
+        api_response = api_instance.sms_send_post(sms_messages)
+        logging.info(f"SMS sent to {phone} with status {api_response}")
+    except ApiException as e:
+        logging.error(f"Exception when calling SMSApi->sms_send_post: {e}")
+        raise
+
+
+
+
 
 
 # Dizionario per la traduzione dei mesi
@@ -108,9 +142,9 @@ def finalizza():
     ora = request.form.get('ora')
     phone = request.form.get('phone')
 
-    try:
+    appointment = Appointment(nome=nome, trattamento=trattamento, data=data, ora=ora, phone=phone)
 
-        appointment = Appointment(nome=nome, trattamento=trattamento, data=data, ora=ora, phone=phone)
+    try:
         db.session.add(appointment)
         db.session.commit()
 
@@ -119,7 +153,8 @@ def finalizza():
         return redirect(url_for('main.thank_you'))
     except Exception as e:
         db.session.rollback()
-        return str(e), 500
+        return render_template('error.html', error_message='Si è verificato un errore durante la finalizzazione della prenotazione. Riprova più tardi.'), 500
+
 
 
 
