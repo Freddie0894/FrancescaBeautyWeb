@@ -94,7 +94,7 @@ button:hover {
     color: white;
 }
 
-#phone-error {
+#email-error {
     background-color: white;
     color: red;
     padding: 5px;
@@ -104,8 +104,17 @@ button:hover {
     display: none; /* Nascondi per default */
 }
 
-#phone-error.visible {
+#email-error.visible {
     display: block; /* Mostra quando aggiungi la classe visible */
+}
+
+.verifyStart {
+    width: 130px;
+    height: 30px;
+}
+
+.email-verification-group {
+    margin: auto;
 }
 
 @media (max-width: 512px) {
