@@ -1,6 +1,6 @@
 from __future__ import print_function
 import clicksend_client
-from clicksend_client import SmsMessage
+from clicksend_client import SmsMessage, EmailRecipient, EmailFrom
 from clicksend_client.rest import ApiException
 from flask import Blueprint, request, redirect, url_for, render_template
 import logging
@@ -8,13 +8,57 @@ from app.models import Appointment
 import urllib.parse
 from app import db
 from datetime import datetime
+from flask import current_app as app
 
 logging.basicConfig(level=logging.INFO)
 
-CLICKSEND_USERNAME = 'francescabeauty'
-CLICKSEND_API_KEY = '9742328E-0718-0589-1F18-0084E4BB3521'
 
 main_bp = Blueprint('main', __name__)
+
+CLICKSEND_USERNAME = 'francescabeauty'
+CLICKSEND_API_KEY = '9742328E-0718-0589-1F18-0084E4BB3521'
+EMAIL_FROM_ID = 'francescabeauty.estetica@gmail.com'
+
+
+
+def send_booking_email(to_email, nome, data, ora, trattamento, booking_key):
+    formatted_data = datetimeformat(data)
+    subject = "Conferma Prenotazione Francesca Beauty"
+    body = f"""
+    <p>Ciao {nome},</p>
+    <p>La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata.</p>
+    <p>Puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}</p>
+    <p>Grazie,<br>Francesca Beauty</p>
+    """
+    
+    # Configura ClickSend client
+    configuration = clicksend_client.Configuration()
+    configuration.username = CLICKSEND_USERNAME
+    configuration.password = CLICKSEND_API_KEY
+    
+    # Configura i dettagli dell'email
+    api_instance = clicksend_client.TransactionalEmailApi(clicksend_client.ApiClient(configuration))
+    
+    email_receipient=EmailRecipient(email=to_email,name=nome)
+    email_from=EmailFrom(email_address_id='29371',name='Francesca Beauty')
+    
+    # Email | Email model
+    email = clicksend_client.Email(to=[email_receipient],
+                                  cc=[email_receipient],
+                                  bcc=[email_receipient],
+                                  _from=email_from,
+                                  subject=subject,
+                                  body=body
+                                  ) 
+
+    try:
+        # Send transactional email
+        api_response = api_instance.email_send_post(email)
+        print(api_response)
+    except ApiException as e:
+        print("Exception when calling TransactionalEmailApi->email_send_post: %s\n" % e)
+
+
 
 
 
@@ -140,15 +184,15 @@ def finalizza():
     trattamento = request.form.get('trattamento')
     data = request.form.get('data')
     ora = request.form.get('ora')
-    phone = request.form.get('phone')
+    email = request.form.get('email')
 
-    appointment = Appointment(nome=nome, trattamento=trattamento, data=data, ora=ora, phone=phone)
+    appointment = Appointment(nome=nome, trattamento=trattamento, data=data, ora=ora, email=email)
 
     try:
         db.session.add(appointment)
         db.session.commit()
 
-        send_booking_key(phone, nome, data, ora, trattamento, appointment.booking_key)
+        send_booking_email(email, nome, data, ora, trattamento, appointment.booking_key)
 
         return redirect(url_for('main.thank_you'))
     except Exception as e:

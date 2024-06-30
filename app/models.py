@@ -10,20 +10,20 @@ class Appointment(db.Model):
     trattamento = db.Column(db.String(100), nullable=False)
     data = db.Column(db.String(20), nullable=False)
     ora = db.Column(db.String(20), nullable=False)
-    phone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
     booking_key = db.Column(db.String(6), nullable=False)
 
-    def __init__(self, nome, trattamento, data, ora, phone):
+    def __init__(self, nome, trattamento, data, ora, email):
         self.nome = nome
         self.trattamento = trattamento
         self.data = data
         self.ora = ora
-        self.phone = phone
-        self.booking_key = self.get_or_generate_booking_key(phone)
+        self.email = email
+        self.booking_key = self.get_or_generate_booking_key(email)
 
     @staticmethod
-    def get_or_generate_booking_key(phone):
-        existing_appointment = Appointment.query.filter_by(phone=phone).first()
+    def get_or_generate_booking_key(email):
+        existing_appointment = Appointment.query.filter_by(email=email).first()
         if existing_appointment:
             return existing_appointment.booking_key
         else:

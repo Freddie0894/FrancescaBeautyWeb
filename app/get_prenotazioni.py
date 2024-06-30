@@ -29,7 +29,7 @@ def get_prenotazioni():
         'trattamento': appointment.trattamento,
         'data': appointment.data,
         'ora': appointment.ora,
-        'phone': appointment.phone,
+        'email': appointment.email,
         'booking_key': appointment.booking_key
     } for appointment in appointments]
     return jsonify(appointments_list)
@@ -50,7 +50,7 @@ def add_prenotazione():
     service = data.get('trattamento')
     date = data.get('data')
     time = data.get('ora')
-    phone = data.get('phone')
+    email = data.get('email')
 
     
     if not all([name, service, date, time]):
@@ -61,7 +61,7 @@ def add_prenotazione():
         trattamento=service,
         data=date,
         ora=time,
-        phone=phone
+        email=email
     )
 
     db.session.add(new_appointment)
@@ -76,7 +76,7 @@ def add_prenotazione():
         'trattamento': new_appointment.trattamento,
         'data': new_appointment.data,
         'ora': new_appointment.ora,
-        'phone': new_appointment.phone,
+        'email': new_appointment.email,
         'booking_key': new_appointment.booking_key
     }), 201
 
@@ -102,7 +102,7 @@ def cercaConCodice():
             'trattamento': appuntamento.trattamento,
             'data': datetimeformat(appuntamento.data),
             'ora': appuntamento.ora,
-            'phone': appuntamento.phone,
+            'email': appuntamento.email,
             'booking_key': appuntamento.booking_key
         })
 
