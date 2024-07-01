@@ -15,6 +15,7 @@
     <hr>
 
     <h2>Inserisci i tuoi dati:</h2>
+    <h5>Verifica la tua Email per poter Prenotare</h5> 
     <form id="confirmation-form" method="POST" action="{{ url_for('main.finalizza') }}">
         <input type="hidden" name="trattamento" value="{{ trattamento }}">
         <input type="hidden" name="data" value="{{ data }}"> 
@@ -23,11 +24,13 @@
             <input type="text" id="nome" name="nome" placeholder="Nome" required>
             <div class="email-verification-group">
                 <input class="emailImp" type="email" id="email" name="email" placeholder="Email" required>
-                <span id="email-verified" class="verified-check" style="display: none;">✅</span>
+                <span id="email-verified" class="verified-check" style="display: none;">✅Email confermata!</span>
                 
                 <button class="verifyStart" type="button" id="send-verification-code">Verifica Email</button>
             </div>
             <div id="email-error">Email non valida.</div>
+
+            <div id="loading-spinner" class="loading-spinner"></div>
 
             <div class="email-verification-group" id="verification-section" style="display: none;">
             <input class="verifyInp" type="text" id="verification-code" name="verification-code" placeholder="Codice di Verifica" required>
@@ -35,10 +38,15 @@
         </div>
 
         <div id="code-sent-message" style="display: none;">
-            Codice inviato. <span id="resend-section">Invia di nuovo <span id="resend-timer">30</span>s</span>
+            Codice inviato alla tua Email.<br> <span id="resend-section">Invia di nuovo <span id="resend-timer">30</span>s</span>
         </div>
 
-        <button type="submit" id="confirm-booking" disabled>Conferma Prenotazione</button>
+        <div id="loading-spinner2" class="loading-spinner2"></div>
+
+        <button class="confirm-booking" type="submit" id="confirm-booking" disabled>Prenota</button>
+        
+        <div id="loading-spinner3" class="loading-spinner3"></div>
+
     </form>
 </div>
 <script src="{{ url_for('static', filename='formControl.js') }}"></script>

@@ -21,6 +21,10 @@ EMAIL_FROM_ID = '29371'
 
 
 def send_verification_code(email):
+    #invalido codice precedente, se presente nella sessione attuale
+    if 'verification_code' in session:
+        session.pop('verification_code')
+
     code = ''.join(random.choices(string.digits, k=6))
     session['verification_code'] = code
 
@@ -56,7 +60,7 @@ def send_verification_code_route():
     if send_verification_code(email):
         return jsonify({'status': 'success'})
     else:
-        return jsonify({'status': 'error'}), 500
+        return jsonify({'status': 'error', 'message': 'Errore nell\'invio del codice di verifica.'}), 500
     
 
 

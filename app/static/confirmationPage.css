@@ -18,6 +18,16 @@ h2 {
     margin-top: 30px;
 }
 
+h5 {
+    font-size: 15px;
+    margin-top: 2px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 p {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -93,7 +103,7 @@ button:hover {
 }
 
 #email-error {
-    background-color: white;
+    background-color: transparent;
     color: red;
     padding: 5px;
     width: 290px;
@@ -123,7 +133,9 @@ button:hover {
 }
 
 .verified-check {
-    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
     vertical-align: middle;
     margin-left: 10px;
 }
@@ -138,7 +150,7 @@ button:hover {
 
 #resend-section {
     font-family: Arial, Helvetica, sans-serif;
-    color: gray;
+    color: black;
     text-decoration: underline;
     cursor: not-allowed;
     pointer-events: none; 
@@ -154,10 +166,25 @@ button:hover {
     font-weight: normal;
 }
 
+#confirm-booking.grey {
+    background-color: gray;
+    color: black;
+    border-color: gray;
+    transition: none;
+}
+
+#confirm-booking.grey:hover {
+    transform: scale(1) ;
+}
 
 
 
 
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
 
@@ -167,6 +194,7 @@ button:hover {
         padding: 0;
         margin: 0;
         height: fit-content;
+        font-weight: 100 !important;
     }
 
     h1 {
@@ -176,8 +204,9 @@ button:hover {
         color: rgb(255, 255, 255);
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 600;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         padding-top: 10px;
+        font-size: 22px;
     }
     
     h2 {
@@ -188,13 +217,24 @@ button:hover {
         font-family: Arial, Helvetica, sans-serif;
         margin-top: 30px;
     }
+
+    h5 {
+        font-size: 15px;
+        margin-top: 2px;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-family: Arial, Helvetica, sans-serif;
+    }
     
     p {
         font-size: 20px;
         font-family: Arial, Helvetica, sans-serif;
-        margin-left: 20px;
         color: white;
         font-weight: 400;
+        margin: auto;
+        margin-top: 5px;
     }
     
     hr {
@@ -281,13 +321,50 @@ button:hover {
         height: 30px;
         margin-top: 5px;
     }
+
+    .loading-spinner {
+        display: none; 
+        border: 10px solid #f3f3f3; 
+        border-top: 10px solid black; 
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+        margin-top: 15px;
+      }
+
+      .loading-spinner2 {
+        display: none; 
+        border: 10px solid #f3f3f3; 
+        border-top: 10px solid black; 
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+        margin-top: 15px;
+      }
+
+      .loading-spinner3 {
+        display: none; 
+        border: 10px solid #f3f3f3; 
+        border-top: 10px solid black; 
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+        margin-top: 15px;
+      }
     
     .email-verification-group {
         margin: auto;
     }
     
     .verified-check {
-        font-size: 1.5em;
+        font-size: 15px;
+        color: white;
         vertical-align: middle;
         margin-left: 10px;
     }
@@ -302,7 +379,7 @@ button:hover {
     
     #resend-section {
         font-family: Arial, Helvetica, sans-serif;
-        color: gray;
+        color: black;
         text-decoration: underline;
         cursor: not-allowed;
         pointer-events: none; 

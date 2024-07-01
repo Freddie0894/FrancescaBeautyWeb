@@ -32,6 +32,6 @@ class Appointment(db.Model):
     @staticmethod
     def generate_unique_booking_key():
         while True:
-            booking_key = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=6))
+            booking_key = ''.join(random.choices(string.ascii_uppercase, k=6))
             if not Appointment.query.filter_by(booking_key=booking_key).first():
                 return booking_key

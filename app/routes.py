@@ -25,10 +25,9 @@ def send_booking_email(to_email, nome, data, ora, trattamento, booking_key):
     formatted_data = datetimeformat(data)
     subject = "Conferma Prenotazione Francesca Beauty"
     body = f"""
-    <p>Ciao {nome},</p>
-    <p>La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata.</p>
+    <p>Ciao {nome}, La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata. 
     <p>Puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}</p>
-    <p>Grazie,<br>Francesca Beauty</p>
+    <p>Grazie, da Francesca Beauty</p>
     """
     
     # Configura ClickSend client
