@@ -21,7 +21,7 @@ EMAIL_FROM_ID = '29371'
 
 
 def send_verification_code(email):
-    code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    code = ''.join(random.choices(string.digits, k=6))
     session['verification_code'] = code
 
     # Configura ClickSend client

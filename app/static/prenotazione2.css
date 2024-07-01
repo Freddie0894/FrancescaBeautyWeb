@@ -2,13 +2,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    width: 1200px;
+    width: 100%;
     margin: auto;
     margin-bottom: 30px;
     margin-top: 10px;
@@ -16,9 +16,10 @@ h1 {
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    margin: auto;
     justify-content: center;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 a {
@@ -123,6 +124,8 @@ a {
         margin: 0 auto;
         justify-content: center;
         margin-top: 50px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     
     a {

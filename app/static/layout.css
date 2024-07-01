@@ -1,24 +1,26 @@
 /* Stili per la navbar */
-
+body {
+    padding: 0 !important;
+    margin: 0;
+}
 
 nav {
     font-family: Arial, Helvetica, sans-serif;
     background-color: transparent; 
-    padding: 10px 20px; 
     display: flex;
-    justify-content: space-between;
     align-items: center; 
     color: white; 
-    width: 1000px;
+    width: 1100px;
     margin: auto;
+    margin-top: 20px; 
 }
 
 /* Stili per i link nella navbar */
 nav a {
     text-decoration: none;
     color: white;
-    margin-right: 20px; 
     transition: 0.3s ease;
+    margin: 20px;
 }
 
 nav a:hover {

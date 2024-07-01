@@ -348,7 +348,8 @@ a {
         flex-direction: column;
         width: 98%;
         margin-top: 1px;
-        height: 60vh;
+        margin-bottom: 0px;
+        height: 55vh;
         overflow-y: auto;
         scrollbar-color: violet #ffffff;
     }
@@ -363,8 +364,8 @@ a {
         border: none;
         transition: 0.3s ease;
         border-radius: 3px;
-        margin-right: 30px;
-        margin-bottom: 40px;
+        margin-right: 40px;
+        margin-bottom: 100px;
     }
     
     .prosegui-button:hover {

@@ -22,7 +22,7 @@
 
             <input type="text" id="nome" name="nome" placeholder="Nome" required>
             <div class="email-verification-group">
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input class="emailImp" type="email" id="email" name="email" placeholder="Email" required>
                 <span id="email-verified" class="verified-check" style="display: none;">✅</span>
                 
                 <button class="verifyStart" type="button" id="send-verification-code">Verifica Email</button>
@@ -30,8 +30,8 @@
             <div id="email-error">Email non valida.</div>
 
             <div class="email-verification-group" id="verification-section" style="display: none;">
-            <input type="text" id="verification-code" name="verification-code" placeholder="Codice di Verifica" required>
-            <button class="verifyStart" type="button" id="verify-code">Invia</button>
+            <input class="verifyInp" type="text" id="verification-code" name="verification-code" placeholder="Codice di Verifica" required>
+            <button class="verifyStart2" type="button" id="verify-code">Invia</button>
         </div>
 
         <div id="code-sent-message" style="display: none;">

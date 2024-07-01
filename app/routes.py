@@ -63,41 +63,41 @@ def send_booking_email(to_email, nome, data, ora, trattamento, booking_key):
 
 
 
-
-def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
-    formatted_data = datetimeformat(data)
-    # client = Client(account_sid, auth_token)
-    message = f"""
-    Ciao {nome},
-    
-    La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata.
-    Puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}
-    
-    Grazie,
-    Francesca Beauty
-    """
-
-    configuration = clicksend_client.Configuration()
-    configuration.username = CLICKSEND_USERNAME
-    configuration.password = CLICKSEND_API_KEY
-
-    api_instance = clicksend_client.SMSApi(clicksend_client.ApiClient(configuration))
-    
-    sms_message = SmsMessage(
-        source="python",
-        body=message,
-        to=phone
-    )
-
-    sms_messages = clicksend_client.SmsMessageCollection(messages=[sms_message])
-
-    try:
-        api_response = api_instance.sms_send_post(sms_messages)
-        logging.info(f"SMS sent to {phone} with status {api_response}")
-    except ApiException as e:
-        logging.error(f"Exception when calling SMSApi->sms_send_post: {e}")
-        raise
-
+#-----------FUNZIONE INVIO SMS CLICKSEND--------------------------------------------------------------------------------------------------------------------------------------
+#def send_booking_key(phone, nome, data, ora, trattamento, booking_key):
+#    formatted_data = datetimeformat(data)
+#    # client = Client(account_sid, auth_token)
+#    message = f"""
+#    Ciao {nome},
+#    
+#    La tua prenotazione da Francesca Beauty per {trattamento}, alle ore {ora}, il giorno {formatted_data} è confermata.
+#    Puoi modificare il tuo appuntamento inserendo questo codice di prenotazione nella sezione 'I MIEI APPUNTAMENTI' del sito: {booking_key}
+#    
+#    Grazie,
+#    Francesca Beauty
+#    """
+#
+#    configuration = clicksend_client.Configuration()
+#    configuration.username = CLICKSEND_USERNAME
+#    configuration.password = CLICKSEND_API_KEY
+#
+#    api_instance = clicksend_client.SMSApi(clicksend_client.ApiClient(configuration))
+#    
+#    sms_message = SmsMessage(
+#        source="python",
+#        body=message,
+#        to=phone
+#    )
+#
+#    sms_messages = clicksend_client.SmsMessageCollection(messages=[sms_message])
+#
+#    try:
+#        api_response = api_instance.sms_send_post(sms_messages)
+#        logging.info(f"SMS sent to {phone} with status {api_response}")
+#    except ApiException as e:
+#        logging.error(f"Exception when calling SMSApi->sms_send_post: {e}")
+#        raise
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
